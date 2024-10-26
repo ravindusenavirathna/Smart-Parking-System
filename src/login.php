@@ -1,23 +1,18 @@
 <?php
-require __DIR__ . '/../config/database.php';
-
 session_start();
+require '../config/database.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $userCollection = $db->users;
 
-    // Access the users collection
-    $collection = $client->selectDatabase('smart_parking_system')->users;
-
-    // Find user by username
-    $user = $collection->findOne(['username' => $username]);
-
-    // Verify password
+    $user = $userCollection->findOne(['username' => $username]);
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $username;
-        echo "Login successful!";
+        header("Location: ../public/parking.html");
+        exit();
     } else {
-        echo "Invalid username or password!";
+        die("Invalid username or password.");
     }
 }

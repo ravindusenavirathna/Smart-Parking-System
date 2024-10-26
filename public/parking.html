@@ -4,17 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Slots</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Parking Management - Smart Parking System</title>
+    <link rel="stylesheet" href="../assets/css/parking.css">
 </head>
 
 <body>
-    <h2>Select a Parking Slot</h2>
-    <form id="reservationForm" action="../src/parking.php" method="post">
-        <label for="slot_number">Slot Number:</label>
-        <input type="number" id="slot_number" name="slot_number" min="1" required>
-        <button type="submit">Reserve Slot</button>
-    </form>
+
+    <header>
+        <h1>Smart Parking System</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="parking.html">Parking</a>
+        </nav>
+    </header>
+
+    <main class="parking-container">
+        <section class="available-spots">
+            <h2>Available Parking Spots</h2>
+            <div id="parking-spots" class="spots-grid">
+                <!-- Parking spot buttons will be dynamically generated here -->
+            </div>
+        </section>
+
+        <section class="reserve-form">
+            <h2>Reserve Your Spot</h2>
+            <form action="../src/reserve.php" method="POST">
+                <div class="input-group">
+                    <label for="vehicle_number">Vehicle Number</label>
+                    <input type="text" id="vehicle_number" name="vehicle_number" required>
+                </div>
+                <div class="input-group">
+                    <label for="selected_spot">Parking Spot</label>
+                    <input type="text" id="selected_spot" name="selected_spot" readonly required>
+                </div>
+                <button type="submit" class="reserve-button">Reserve Spot</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="../assets/js/parking.js"></script>
 </body>
 
 </html>
