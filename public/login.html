@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Smart Parking System</title>
     <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -27,7 +32,29 @@
             <p class="register-text">Don't have an account? <a href="register.html">Sign up</a></p>
         </div>
     </div>
+    <!-- Popup Notification -->
+    <div id="popupNotification" class="popup-notification hidden">Incorrect username or password.</div>
 
+    <script>
+        // Function to show popup notification for incorrect login
+        function showPopupNotification(message) {
+            const popupNotification = document.getElementById("popupNotification");
+            popupNotification.textContent = message;
+            popupNotification.classList.remove("hidden");
+            popupNotification.classList.add("visible");
+
+            // Hide popup after 3 seconds
+            setTimeout(() => {
+                popupNotification.classList.add("hidden");
+                popupNotification.classList.remove("visible");
+            }, 3000);
+        }
+
+        // Check if there's an error flag in the URL
+        if (window.location.search.includes("error=1")) {
+            showPopupNotification("Incorrect username or password.");
+        }
+    </script>
 </body>
 
 </html>

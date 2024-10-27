@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Management - Smart Parking System</title>
     <link rel="stylesheet" href="../assets/css/parking.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -14,35 +19,46 @@
         <h1>Smart Parking System</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-            <a href="parking.html">Parking</a>
+            <a href="features.html">Features</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <main class="parking-container">
-        <section class="available-spots">
-            <h2>Available Parking Spots</h2>
-            <div id="parking-spots" class="spots-grid">
-                <!-- Parking spot buttons will be dynamically generated here -->
-            </div>
-        </section>
+        <div style="display: flex;justify-content: space-evenly;">
+            <div style="width:fit-content;">
+                <section class="available-spots">
+                    <h2>Available Parking Spots</h2>
+                    <div id="parking-spots" class="spots-grid">
+                        <!-- Parking spot buttons will be dynamically generated here -->
+                    </div>
+                </section>
 
-        <section class="reserve-form">
-            <h2>Reserve Your Spot</h2>
-            <form action="../src/reserve.php" method="POST">
-                <div class="input-group">
-                    <label for="vehicle_number">Vehicle Number</label>
-                    <input type="text" id="vehicle_number" name="vehicle_number" required>
-                </div>
-                <div class="input-group">
-                    <label for="selected_spot">Parking Spot</label>
-                    <input type="text" id="selected_spot" name="selected_spot" readonly required>
-                </div>
-                <button type="submit" class="reserve-button">Reserve Spot</button>
-            </form>
-        </section>
+                <section class="reserve-form">
+                    <h2>Reserve Your Spot</h2>
+                    <form action="../src/reserve.php" method="POST">
+                        <div class="input-group">
+                            <label for="vehicle_number">Vehicle Number</label>
+                            <input type="text" id="vehicle_number" name="vehicle_number" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="selected_spot">Parking Spot</label>
+                            <input type="text" id="selected_spot" name="selected_spot" readonly required>
+                        </div>
+                        <button type="submit" class="reserve-button" style="font-family: 'Ubuntu', sans-serif;">Reserve
+                            Spot</button>
+                    </form>
+                </section>
+            </div>
+            <div>
+                <h2>Your Reserved Parking Spots</h2>
+                <div id="user-reserved-spots" class="reserved-grid"></div>
+
+            </div>
+        </div>
+
     </main>
+    <div id="popupNotification" class="popup-notification hidden"></div>
 
     <script src="../assets/js/parking.js"></script>
 </body>

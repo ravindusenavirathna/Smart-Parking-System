@@ -7,7 +7,7 @@
 
 /* General Body Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Ubuntu", sans-serif;
     background: #f5f5f5;
     color: #333;
 }
@@ -15,7 +15,7 @@ body {
 /* Header */
 header {
     padding: 20px;
-    background-color: #1e90ff;
+    background-color: #333;
     color: white;
     text-align: center;
 }
@@ -36,10 +36,9 @@ nav a:hover {
 
 /* Parking Container Styling */
 .parking-container {
-    display: flex;
-    flex-direction: column;
+
     align-items: center;
-    padding: 20px;
+    padding: 20px 15%;
 }
 
 .available-spots,
@@ -54,7 +53,7 @@ nav a:hover {
 }
 
 h2 {
-    color: #1e90ff;
+    color: #555;
     margin-bottom: 15px;
     text-align: center;
 }
@@ -62,11 +61,13 @@ h2 {
 /* Spots Grid */
 .spots-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+
 }
 
 .spots-grid button {
+    font-family: "Ubuntu", sans-serif;
     padding: 15px;
     background-color: #e0e0e0;
     color: #333;
@@ -115,7 +116,7 @@ h2 {
     width: 100%;
     padding: 12px;
     border: none;
-    background-color: #1e90ff;
+    background-color: #555;
     color: white;
     font-size: 1em;
     border-radius: 8px;
@@ -125,5 +126,122 @@ h2 {
 }
 
 .reserve-button:hover {
-    background-color: #007acc;
+    background-color: #333;
+}
+
+/* Styles for Parking Spots */
+.spot-button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.spot-button.available {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.spot-button.reserved {
+    background-color: #f44336;
+    color: white;
+}
+
+/* User Reserved Spot Section */
+.user-reserved-spot {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.user-reserved-spot h3 {
+    color: #1e90ff;
+    margin-bottom: 10px;
+}
+
+.user-reserved-spot p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+
+.reserved-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.spot {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.spot:hover {
+    transform: scale(1.05);
+}
+
+.spot-number {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.vehicle-number {
+    font-size: 16px;
+    color: #555;
+    margin: 8px 0;
+}
+
+.release-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #ff6347;
+    /* Soft red */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.release-button:hover {
+    background-color: #e85347;
+    /* Darker red for hover */
+}
+
+.popup-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    /* Success color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+.popup-notification.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.popup-notification.hidden {
+    opacity: 0;
+    transform: translateX(100%);
 }

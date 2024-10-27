@@ -12,13 +12,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedSpot = trim($_POST['selected_spot']);
     $username = $_SESSION['user'];
 
-    $reservationsCollection = $db->reservations;
-
-    $existingReservation = $reservationsCollection->findOne(['spot' => $selectedSpot]);
-    if ($existingReservation) {
-        die("Sorry, this spot is already reserved.");
+    // Check for empty fields
+    if (empty($vehicleNumber) || empty($selectedSpot)) {
+        header("Location: ../public/parking.html?status=error&message=All fields are required.");
+        exit();
     }
 
+    // Ensure database connection
+    if (!$db) {
+        die("Database connection error.");
+    }
+
+    // Connect to the reservations collection
+    $reservationsCollection = $db->reservations;
+
+    // Check if the selected spot is already reserved
+    $existingReservation = $reservationsCollection->findOne(['spot' => $selectedSpot]);
+    if ($existingReservation) {
+        header("Location: ../public/parking.html?status=error&message=Spot is already reserved.");
+        exit();
+    }
+
+    // Reserve the selected spot
     $reservationsCollection->insertOne([
         'username' => $username,
         'vehicle_number' => $vehicleNumber,
@@ -26,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'timestamp' => new MongoDB\BSON\UTCDateTime(),
     ]);
 
-    header("Location: ../public/parking.html?status=success");
+    // Redirect with success status
+    header("Location: ../public/parking.html?status=success&message=Spot reserved successfully.");
     exit();
 }

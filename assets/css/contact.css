@@ -1,6 +1,6 @@
 /* General styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Ubuntu", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -61,10 +61,8 @@ header nav a:hover {
 
 .contact-form-container form {
     background-color: #fff;
-    padding: 20px;
-    width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    padding: 20px 0px;
+    width: 450px;
 }
 
 .contact-form-container label {
@@ -76,8 +74,9 @@ header nav a:hover {
 
 .contact-form-container input,
 .contact-form-container textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
+    margin-right: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -85,9 +84,10 @@ header nav a:hover {
 }
 
 .contact-form-container button {
+    font-family: "ubuntu";
     width: 100%;
     padding: 10px;
-    background-color: #333;
+    background-color: #555;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -96,7 +96,7 @@ header nav a:hover {
 }
 
 .contact-form-container button:hover {
-    background-color: #ffd700;
+    background-color: #333;
 }
 
 /* Footer */
@@ -105,7 +105,68 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.container-contact {
+    width: 780px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-icon {
+    color: #818080;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 10px;
+    margin-left: 15px;
+    height: 200px;
+    border-left: #5555556b solid 3px;
+    margin-top: 125px;
+    padding-top: 60px;
+    margin-right: 15px;
+    width: 350px;
+}
+
+.icon-r {
+    opacity: 0.7;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+.icon-r :hover {
+    opacity: 0.9;
+    scale: 1.05;
+}
+
+.icon-r img {
+    margin-right: 10px;
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+
+}
+
+
+
+.icon-c {
+    width: 42px;
+    height: 50px;
+    padding-left: 8px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    border: #555 solid 3px;
 }
