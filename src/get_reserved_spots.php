@@ -1,31 +1,46 @@
 <?php
-session_start();
 require '../config/database.php';
+session_start();
 
 if (!isset($_SESSION['user'])) {
-    echo json_encode(['error' => 'User not logged in']);
+    header("Location: ../public/login.html");
     exit();
 }
 
 $username = $_SESSION['user'];
 $reservationsCollection = $db->reservations;
+$releasedReservationsCollection = $db->released_reservations;
 
-// Get all reserved spots
-$allReservedSpots = $reservationsCollection->find([], ['projection' => ['spot' => 1]]);
-$reservedSpots = [];
-foreach ($allReservedSpots as $reservation) {
-    $reservedSpots[] = $reservation->spot;
+$reservedSpots = $reservationsCollection->find(['status' => 'reserved']);
+$userReservedSpots = $reservationsCollection->find(['username' => $username, 'status' => 'reserved']);
+$previousReservations = $releasedReservationsCollection->find(['username' => $username]);
+
+$reservedSpotsArray = [];
+$userReservedSpotsArray = [];
+$previousReservationsArray = [];
+
+foreach ($reservedSpots as $spot) {
+    $reservedSpotsArray[] = $spot['spot'];
 }
 
-// Get reserved spots for the logged-in user with vehicle numbers
-$userReservations = $reservationsCollection->find(['username' => $username], ['projection' => ['spot' => 1, 'vehicle_number' => 1]]);
-$userReservedSpots = [];
-foreach ($userReservations as $reservation) {
-    $userReservedSpots[] = [
-        'spot' => $reservation->spot,
-        'vehicle_number' => $reservation->vehicle_number,
+foreach ($userReservedSpots as $spot) {
+    $userReservedSpotsArray[] = [
+        'spot' => $spot['spot'],
+        'vehicle_number' => $spot['vehicle_number'],
     ];
 }
 
-echo json_encode(['reservedSpots' => $reservedSpots, 'userReservedSpots' => $userReservedSpots]);
-exit();
+foreach ($previousReservations as $spot) {
+    $previousReservationsArray[] = [
+        'spot' => $spot['spot'],
+        'vehicle_number' => $spot['vehicle_number'],
+        'release_time' => $spot['release_time']->toDateTime()->format('Y-m-d H:i:s'),
+    ];
+}
+
+// Return JSON response
+echo json_encode([
+    'reservedSpots' => $reservedSpotsArray,
+    'userReservedSpots' => $userReservedSpotsArray,
+    'previousReservations' => $previousReservationsArray,
+]);

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Smart Parking System</title>
+    <link rel="shortcut icon" href="../assets/images/fav-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,40 +42,11 @@
             <p class="login-text">Already have an account? <a href="login.html">Login here</a></p>
         </div>
     </div>
+    <!-- Popup Notification -->
     <div id="popupNotification" class="popup-notification hidden">
         Passwords do not match. Please try again.
     </div>
-    <script>
-        function validatePasswords() {
-            const password = document.getElementById("password");
-            const confirmPassword = document.getElementById("confirm_password");
-            const popupNotification = document.getElementById("popupNotification");
-
-            // Check if passwords match
-            if (password.value !== confirmPassword.value) {
-                // Show popup notification
-                popupNotification.classList.remove("hidden");
-                popupNotification.classList.add("visible");
-
-                // Highlight input fields in red
-                password.classList.add("error");
-                confirmPassword.classList.add("error");
-
-                // Hide popup after 3 seconds
-                setTimeout(() => {
-                    popupNotification.classList.add("hidden");
-                    popupNotification.classList.remove("visible");
-                }, 3000);
-
-                return false; // Prevent form submission
-            } else {
-                // Remove error styling if passwords match
-                password.classList.remove("error");
-                confirmPassword.classList.remove("error");
-                return true; // Allow form submission
-            }
-        }
-    </script>
+    <script src="../assets/js/register.js"></script>
 </body>
 
 </html>

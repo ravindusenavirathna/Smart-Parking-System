@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user'] = $username;
         header("Location: ../public/parking.html");
     } else {
-        header("Location: ../public/login.html?error=1"); // Redirect with error flag
+        header("Location: ../public/login.html?error=1");
     }
     exit();
 }

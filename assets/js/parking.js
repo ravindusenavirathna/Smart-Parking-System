@@ -4,16 +4,23 @@ const selectedSpotInput = document.getElementById("selected_spot");
 const userReservedSpotsContainer = document.getElementById(
   "user-reserved-spots"
 );
+const previousReservationsContainer = document.getElementById(
+  "previous-reservations"
+);
 
 // Load parking spots from the server
 async function loadParkingSpots() {
   const response = await fetch("../src/get_reserved_spots.php");
-  const { reservedSpots, userReservedSpots } = await response.json();
+  const {
+    reservedSpots,
+    userReservedSpots,
+    previousReservations = [],
+  } = await response.json();
 
   parkingSpotsContainer.innerHTML = "";
   userReservedSpotsContainer.innerHTML = "";
+  previousReservationsContainer.innerHTML = "";
 
-  // Display parking spots as buttons
   for (let i = 1; i <= totalSpots; i++) {
     const spotId = `Spot ${i}`;
     const isReserved = reservedSpots.includes(spotId);
@@ -26,9 +33,8 @@ async function loadParkingSpots() {
     );
 
     if (isReserved) {
-      spotButton.disabled = true; // Disable spots reserved by other users
+      spotButton.disabled = true;
     } else {
-      // Enable spots available or reserved by the current user
       spotButton.addEventListener("click", () => selectSpot(spotId));
     }
 
@@ -37,14 +43,12 @@ async function loadParkingSpots() {
 
   // Display user's reserved spots in a list with release option
   if (userReservedSpots.length === 0) {
-    // If no reserved spots, display a message
     const noSpotsMessage = document.createElement("p");
     noSpotsMessage.textContent = "No spot reserved.";
-    noSpotsMessage.style.textAlign = "center";
+    noSpotsMessage.style.textAlign = "left";
     noSpotsMessage.classList.add("no-spots-message");
     userReservedSpotsContainer.appendChild(noSpotsMessage);
   } else {
-    // Otherwise, display each reserved spot
     userReservedSpots.forEach((reservation) => {
       const spotDiv = document.createElement("div");
       spotDiv.classList.add("spot");
@@ -63,13 +67,43 @@ async function loadParkingSpots() {
       releaseButton.style.fontFamily = "ubuntu";
       releaseButton.onclick = () => releaseSpot(reservation.spot);
 
-      // Append elements to the spot div
       spotDiv.appendChild(spotNumber);
       spotDiv.appendChild(vehicleNumber);
       spotDiv.appendChild(releaseButton);
 
-      // Add spot div to container
       userReservedSpotsContainer.appendChild(spotDiv);
+    });
+  }
+
+  // Display user's previous reservations
+  if (previousReservations.length === 0) {
+    const noPreviousSpotsMessage = document.createElement("p");
+    noPreviousSpotsMessage.textContent = "No previous reservations.";
+    noPreviousSpotsMessage.style.textAlign = "left";
+    noPreviousSpotsMessage.classList.add("no-spots-message");
+    previousReservationsContainer.appendChild(noPreviousSpotsMessage);
+  } else {
+    previousReservations.forEach((reservation) => {
+      const spotDiv = document.createElement("div");
+      spotDiv.classList.add("spot");
+
+      const spotNumber = document.createElement("p");
+      spotNumber.textContent = `Spot: ${reservation.spot}`;
+      spotNumber.classList.add("spot-number");
+
+      const vehicleNumber = document.createElement("p");
+      vehicleNumber.textContent = `Vehicle: ${reservation.vehicle_number}`;
+      vehicleNumber.classList.add("vehicle-number");
+
+      const releaseTime = document.createElement("p");
+      releaseTime.textContent = `Released on: ${reservation.release_time}`;
+      releaseTime.classList.add("release-time");
+
+      spotDiv.appendChild(spotNumber);
+      spotDiv.appendChild(vehicleNumber);
+      spotDiv.appendChild(releaseTime);
+
+      previousReservationsContainer.appendChild(spotDiv);
     });
   }
 }
@@ -83,14 +117,11 @@ function selectSpot(spotId) {
 function showPopupNotification(message) {
   const popupNotification = document.getElementById("popupNotification");
 
-  // Set the message for the notification
   popupNotification.textContent = message;
 
-  // Display the notification
   popupNotification.classList.remove("hidden");
   popupNotification.classList.add("visible");
 
-  // Hide the notification after 3 seconds
   setTimeout(() => {
     popupNotification.classList.add("hidden");
     popupNotification.classList.remove("visible");
@@ -108,11 +139,10 @@ async function releaseSpot(spotId) {
   const result = await response.text();
   if (result === "success") {
     showPopupNotification("Parking spot released successfully!");
-    loadParkingSpots(); // Refresh spots after release
+    loadParkingSpots();
   } else {
     showPopupNotification("Failed to release the parking spot.");
   }
 }
 
-// Load spots on page load
 document.addEventListener("DOMContentLoaded", loadParkingSpots);

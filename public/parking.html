@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Management - Smart Parking System</title>
+    <link rel="shortcut icon" href="../assets/images/fav-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/parking.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +18,9 @@
 
     <header>
         <h1>Smart Parking System</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="features.html">Features</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <a href="../public/index.html">
+            <img src="../assets/images/logout.png" alt="logout" width="30px" height="30px"
+                style="filter: invert(1);margin-top: 8.5px;"></a>
     </header>
 
     <main class="parking-container">
@@ -54,10 +53,14 @@
                 <h2>Your Reserved Parking Spots</h2>
                 <div id="user-reserved-spots" class="reserved-grid"></div>
 
+                <h2>Previous Reservations</h2>
+                <div id="previous-reservations" class="reserved-grid2"></div>
             </div>
         </div>
 
     </main>
+
+    <!-- Popup Notification -->
     <div id="popupNotification" class="popup-notification hidden"></div>
 
     <script src="../assets/js/parking.js"></script>

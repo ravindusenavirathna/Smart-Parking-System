@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Smart Parking System</title>
+    <link rel="shortcut icon" href="../assets/images/fav-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,26 +36,7 @@
     <!-- Popup Notification -->
     <div id="popupNotification" class="popup-notification hidden">Incorrect username or password.</div>
 
-    <script>
-        // Function to show popup notification for incorrect login
-        function showPopupNotification(message) {
-            const popupNotification = document.getElementById("popupNotification");
-            popupNotification.textContent = message;
-            popupNotification.classList.remove("hidden");
-            popupNotification.classList.add("visible");
-
-            // Hide popup after 3 seconds
-            setTimeout(() => {
-                popupNotification.classList.add("hidden");
-                popupNotification.classList.remove("visible");
-            }, 3000);
-        }
-
-        // Check if there's an error flag in the URL
-        if (window.location.search.includes("error=1")) {
-            showPopupNotification("Incorrect username or password.");
-        }
-    </script>
+    <script src="../assets/js/login.js"></script>
 </body>
 
 </html>
