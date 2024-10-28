@@ -2,6 +2,15 @@
 
 The **Smart Parking System** is a web-based platform that streamlines parking space management. This system allows users to reserve and release parking spots, view their current and past reservations, and provides real-time updates on parking spot availability. The project is designed to enhance parking efficiency, reduce manual labor, and provide users with a hassle-free experience in managing their parking needs.
 
+![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/home.png)
+![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/system.png)
+![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/feature.png)
+![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/register.png)
+![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/login.png)
+![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/contact.png)
+
+---
+
 ## Features
 
 1.  **User Authentication**:
@@ -30,6 +39,8 @@ The **Smart Parking System** is a web-based platform that streamlines parking sp
 
     - Real-time pop-up notifications that inform the user about successful or failed actions (e.g., "Spot reserved successfully" in green and "Failed to release the parking spot" in red).
 
+---
+
 ## Tech Stack
 
 - **Frontend**:
@@ -46,27 +57,71 @@ The **Smart Parking System** is a web-based platform that streamlines parking sp
 - **Other Libraries and Tools**:
 
   - **MongoDB PHP Library**: Facilitates interaction with MongoDB from the PHP backend.
-  - **Make.com**: Optional tool for integrating additional automation workflows.
+
+---
 
 ## Project Structure
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`  ├── config/  │   ├── database.php      # MongoDB connection setup  ├── public/  │   ├── index.html        # Homepage  │   ├── login.html        # User login page  │   ├── parking.html      # Main parking management interface  ├── src/  │   ├── contact.php       # Handles contact form submissions  │   ├── reserve.php       # Manages spot reservation  │   ├── release_spot.php  # Handles release of spots, moving data to "released" collection  │   ├── get_reserved_spots.php # Retrieves reserved and released spot data for display  ├── assets/  │   ├── css/  │   │   ├── style.css     # Styles for login and main pages  │   │   ├── contact.css   # Styles for the contact page  │   │   ├── parking.css   # Styles for parking page  │   ├── js/  │   │   ├── login.js      # Logic for login validation  │   │   ├── parking.js    # Manages reservation, release, and dynamic UI updates  │   └── images/           # Icons and images used across the website  └── README.md             # Project description and setup instructions  `
+```
+├── config/
+│   ├── database.php              # MongoDB connection setup
+├── public/
+│   ├── contact.html              # Contact page
+│   ├── features.html             # Features page
+│   ├── index.html                # Homepage
+│   ├── login.html                # User login page
+│   ├── parking.html              # Main parking management interface
+│   ├── register.html             # User registration page
+├── src/
+│   ├── contact.php               # Handles contact form submissions
+│   ├── login.php                 # User login handling
+│   ├── register.php              # User registration handling
+│   ├── release_spot.php          # Handles release of spots, moving data to "released" collection
+│   ├── reserve.php               # Manages spot reservation
+│   ├── get_reserved_spots.php    # Retrieves reserved and released spot data for display
+├── assets/
+│   ├── css/
+│   │   ├── contact.css           # Styles for the contact page
+│   │   ├── features.css          # Styles for the features page
+│   │   ├── login.css             # Styles for the login page
+│   │   ├── parking.css           # Styles for parking page
+│   │   ├── register.css          # Styles for register page
+│   │   ├── style.css             # Styles for login and main pages
+│   ├── js/
+│   │   ├── login.js              # Logic for login validation
+│   │   ├── parking.js            # Manages reservation, release, and dynamic UI updates
+│   │   ├── register.js           # Logic for user registration
+│   └── images/                   # Icons and images used across the website
+└── README.md                     # Project description and setup instructions
+
+```
+
+---
 
 ## Setup Instructions
 
-1.  bashCopy codegit clone https://github.com/your-username/smart-parking-system.git
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/your-username/smart-parking-system.git
+    ```
 2.  **Install Dependencies**:
 
-    - bashCopy codecomposer require mongodb/mongodb
+    - Install the MongoDB PHP Library:
+
+    ```bash
+    composer require mongodb/mongodb
+    ```
 
 3.  **Configure Database**:
 
-    - Update the MongoDB connection details in config/database.php.
+    - Update the MongoDB connection details in `config/database.php`.
 
 4.  **Run the Application**:
 
     - Set up a local or cloud-based server (e.g., Apache).
-    - textCopy codehttp://localhost/smart-parking-system/public/index.html
+    - `http://localhost/smart-parking-system/public/index.html`
+
+---
 
 ## Usage Guide
 
@@ -87,11 +142,15 @@ Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQL
 
     - Check the "Previous Reservations" section to view all released spots with timestamps for tracking.
 
+---
+
 ## Future Improvements
 
 - **Automated Spot Detection**: Integrate sensors to detect occupied and free spots automatically.
 - **Enhanced Notifications**: Implement SMS or email notifications for reservation updates.
 - **Reservation Reminders**: Send users reminders to release spots if they exceed certain time limits.
+
+---
 
 ## License
 
