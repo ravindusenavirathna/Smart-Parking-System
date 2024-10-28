@@ -2,12 +2,12 @@
 
 The **Smart Parking System** is a web-based platform that streamlines parking space management. This system allows users to reserve and release parking spots, view their current and past reservations, and provides real-time updates on parking spot availability. The project is designed to enhance parking efficiency, reduce manual labor, and provide users with a hassle-free experience in managing their parking needs.
 
-![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/home.png)
-![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/system.png)
-![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/feature.png)
-![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/register.png)
-![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/login.png)
-![Alt Text](../Downloads/Other/Smart%20Parking%20System/assets/screenshots/contact.png)
+![home](https://github.com/ravindusenavirathna/Smart-Parking-System/blob/1fd06edd496306ee2eeb786ca31c71f945a8e283/assets/screenshots/home.png)
+![system](https://github.com/ravindusenavirathna/Smart-Parking-System/blob/1fd06edd496306ee2eeb786ca31c71f945a8e283/assets/screenshots/system.png)
+![features](https://github.com/ravindusenavirathna/Smart-Parking-System/blob/1fd06edd496306ee2eeb786ca31c71f945a8e283/assets/screenshots/feature.png)
+![register](https://github.com/ravindusenavirathna/Smart-Parking-System/blob/1fd06edd496306ee2eeb786ca31c71f945a8e283/assets/screenshots/register.png)
+![login](https://github.com/ravindusenavirathna/Smart-Parking-System/blob/1fd06edd496306ee2eeb786ca31c71f945a8e283/assets/screenshots/login.png)
+![contact](https://github.com/ravindusenavirathna/Smart-Parking-System/blob/1fd06edd496306ee2eeb786ca31c71f945a8e283/assets/screenshots/contact.png)
 
 ---
 
