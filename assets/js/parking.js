@@ -114,10 +114,11 @@ function selectSpot(spotId) {
 }
 
 // Function to show popup notification
-function showPopupNotification(message) {
+function showPopupNotification(message, color = "green") {
   const popupNotification = document.getElementById("popupNotification");
 
   popupNotification.textContent = message;
+  popupNotification.style.backgroundColor = color;
 
   popupNotification.classList.remove("hidden");
   popupNotification.classList.add("visible");
@@ -138,10 +139,10 @@ async function releaseSpot(spotId) {
 
   const result = await response.text();
   if (result === "success") {
-    showPopupNotification("Parking spot released successfully!");
+    showPopupNotification("Parking spot released successfully!", "#4CAF50");
     loadParkingSpots();
   } else {
-    showPopupNotification("Failed to release the parking spot.");
+    showPopupNotification("Failed to release the parking spot.", "#D32F2F");
   }
 }
 
