@@ -102,7 +102,7 @@ The **Smart Parking System** is a web-based platform that streamlines parking sp
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/your-username/smart-parking-system.git
+    git clone https://github.com/ravindusenavirathna/smart-parking-system.git
     ```
 2.  **Install Dependencies**:
 
