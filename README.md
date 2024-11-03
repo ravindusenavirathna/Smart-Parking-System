@@ -151,7 +151,3 @@ The **Smart Parking System** is a web-based platform that streamlines parking sp
 - **Reservation Reminders**: Send users reminders to release spots if they exceed certain time limits.
 
 ---
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more information.
