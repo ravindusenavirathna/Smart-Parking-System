@@ -113,3 +113,7 @@ footer {
     position: fixed;
     bottom: 0;
 }
+
+main {
+    margin-bottom: 100px;
+}

@@ -94,6 +94,11 @@ h2 {
 }
 
 /* Reserve Form Styling */
+
+input {
+    font-family: 'ubuntu', sans-serif;
+}
+
 .input-group {
     margin-bottom: 20px;
 }
@@ -111,6 +116,13 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1em;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
 }
 
 .reserve-button {

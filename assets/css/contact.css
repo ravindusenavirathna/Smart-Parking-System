@@ -80,7 +80,15 @@ header nav a:hover {
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
 }
 
 .contact-form-container button {
@@ -167,4 +175,8 @@ main {
     justify-content: center;
     border-radius: 8px;
     border: #555 solid 3px;
+}
+
+input {
+    font-family: 'ubuntu', sans-serif;
 }

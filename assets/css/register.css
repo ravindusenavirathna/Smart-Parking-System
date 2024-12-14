@@ -56,6 +56,10 @@ body {
 }
 
 /* Input Group Styling */
+input {
+    font-family: 'ubuntu', sans-serif;
+}
+
 .input-group {
     margin-bottom: 20px;
     text-align: left;
